@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Accueil projet TWIC 2023</title>
 </head>
 <body>
 <h1><%= "Bienvenue sur l'interface Web du Projet TWIC ESEO 2023" %>
