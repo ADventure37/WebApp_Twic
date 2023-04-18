@@ -39,7 +39,10 @@
                 </c:forEach>
             </select>
         </p>
-        <p><input type = "submit" name= "bouton" value="calculer" /></p>
+        <p>
+            <input type = "submit" name= "bouton" value="calculer" />
+            <input type="button" id="listeVille" onclick="window.location.href = 'PageListeVilles';" value="Aller à la liste des villes" />
+        </p>
 
         <p>
             <c:if test="${ !empty distance }">

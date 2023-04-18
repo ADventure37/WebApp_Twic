@@ -37,6 +37,7 @@
         </p>
         <p>
             <input type = "submit" name= "bouton" value="valider" />
+            <input type="button" id="listeVille" onclick="window.location.href = 'PageListeVilles';" value="Aller à la liste des villes" /></p>
         </p>
     </form>
     </p>

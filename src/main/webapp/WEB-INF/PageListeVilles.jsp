@@ -25,6 +25,9 @@
             <label for="page">Numéro de page</label>
             <input type = "text" id="page" name="page" />
             <input type = "submit" name= "bouton" value="afficher" />
+            <input type="button" id="listeVille" onclick="window.location.href = 'PageCalculDistance';" value="Aller au calcul de distance" />
+        </p>
+        <p>
             <c:out value=" Il y a actuellement un total de ${ totalPages } page pour ${elementTotal} de ville" />
         </p>
     </form>

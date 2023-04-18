@@ -100,6 +100,7 @@ public class PageCalculDistance extends HttpServlet {
     public Ville recupereVilleN(String nom){
         Ville ville = new Ville();
         try {
+            nom = nom.replace(" ", "_");
             String urlbase = "http://localhost:8080/ville";
             URL url = new URL(urlbase +"?nom="+nom);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -139,7 +140,6 @@ public class PageCalculDistance extends HttpServlet {
         double y = villeArrive.getLongitude() - villeDepart.getLongitude();
         double z = sqrt(pow(x,2) + pow(y,2));
         double distance = 1.852 * 60 * z;
-        System.out.println("distance: "+ distance);
         return distance;
     }
 }

@@ -41,7 +41,6 @@ public class Modification extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Ville ville = new Ville();
-        System.out.println(request.getParameter("codeCommune"));
         ville.setCodeCommune(request.getParameter("codeCommune"));
         ville.setNom(request.getParameter("nom"));
         ville.setCodePostal(request.getParameter("codePostal"));
@@ -101,11 +100,11 @@ public class Modification extends HttpServlet {
         }
         return ville;
     }
-    public Ville modifieVilleCC(Ville ville){
+    public void modifieVilleCC(Ville ville){
         try {
             String urlbase = "http://localhost:8080/ville/";
-            URL url = new URL(urlbase +ville.getCodeCommune()+"?nom="+ville.getNom()+"&codePostal=" +
-                    ville.getCodePostal() +"&latitude="+ville.getLatitude()+"&longitude="+ville.getLongitude());
+            URL url = new URL(urlbase +ville.getCodeCommune()+"?nom="+ville.getNom().replace(" ", "_")
+            +"&codePostal=" + ville.getCodePostal() +"&latitude="+ville.getLatitude()+"&longitude="+ville.getLongitude());
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("PUT");
 
@@ -119,19 +118,9 @@ public class Modification extends HttpServlet {
                 content.append(inputLine);
             }
             in.close();
-            String[] sep = content.toString().split(",");
-            ville.setCodeCommune(sep[0].substring(2));
-            ville.setNom(sep[1]);
-            ville.setCodePostal(sep[2]);
-
-            String end = sep[4].substring(0, sep[4].length()-2);
-
-            ville.setLatitude(parseDouble(sep[3]));
-            ville.setLongitude(parseDouble(end));
 
         } catch (IOException e) {
             System.err.println("Error making HTTP request: " + e.getMessage());
         }
-        return ville;
     }
 }
